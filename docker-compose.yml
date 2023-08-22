@@ -1,0 +1,44 @@
+version: '3'
+services:
+  node0:
+    user: root
+    image: "tendermint/tendermint:v0.34.8"
+    volumes:
+      - "./node0:/tendermint"
+    ports:
+      - "26656:26656"
+      - "26657:26657"
+    environment:
+      - TMHOME=/tendermint
+    command:
+      - start
+
+  node1:
+    user: root
+    image: "tendermint/tendermint:v0.34.8"
+    volumes:
+      - "./node1:/tendermint"
+    ports:
+      - "26660:26656"
+      - "26661:26657"
+    environment:
+      - TMHOME=/tendermint
+    command:
+      - start
+
+  node2:
+    user: root
+    image: "tendermint/tendermint:v0.34.8"
+    volumes:
+      - "./node2:/tendermint"
+    ports:
+      - "26664:26656"
+      - "26665:26657"
+    environment:
+      - TMHOME=/tendermint
+    command:
+      - start
+
+networks:
+  default:
+    external: false
